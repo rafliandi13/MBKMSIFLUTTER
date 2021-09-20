@@ -1,32 +1,33 @@
 import 'dart:io';
 import 'data.dart';
 import 'login.dart';
-void main() => login();
 
+void main() => login();
 
 User? currentUser;
 void home() {
-  print("\nSelamat Datang ${currentUser?.name}!");
-  print("1.Cek Saldo");
-  print("2.Tarik Tunai");
-  print("3.Setor Tunai");
-  print("4.Transfer Saldo"); 
+  print(
+      "\nSelamat Datang di Aplikasi Kalkulator Sederhana ${currentUser?.name}!");
+  print("1.Pertambahan");
+  print("2.Pengurangan");
+  print("3.Pembagian");
+  print("4.Perkalian");
   print("5.Ganti Akun");
   print("6.Keluar Aplikasi");
   stdout.write("Pilih Menu [1-6] :");
   var menu = stdin.readLineSync();
   switch (menu) {
     case '1':
-      balanceCheck();
+      pertambahan();
       break;
     case '2':
-      cashWithdraw();
+      pengurangan();
       break;
     case '3':
-      cashDeposit();
+      pembagian();
       break;
     case '4':
-      balanceTransfer();
+      perkalian();
       break;
     case '5':
       currentUser = null;
@@ -39,52 +40,66 @@ void home() {
   home();
 }
 
-void balanceCheck() {
-  print("Saldo Anda saat ini, ");
-  print("Rp ${currentUser?.balance}");
+void pertambahan() {
+  int stopCondition = 0;
+  do {
+    stdout.write("Nilai a: ");
+    int a = int.parse(stdin.readLineSync() ?? '');
+    stdout.write("Nilai b: ");
+    int b = int.parse(stdin.readLineSync() ?? '');
+    int hasil = a + b;
+    print("Hasil $a + $b = $hasil");
+    print('Apakah Anda Ingin Melakukan Operasi Lagi ?');
+    print('Input angka Sembarang untuk Melanjutkan');
+    print('dan Apabila Ingin Stop Maka Input angka -999 ');
+    stopCondition = int.parse(stdin.readLineSync() ?? '');
+  } while (stopCondition != -999);
 }
 
-void cashWithdraw() {
-  stdout.write("Nominal Penarikan : Rp");
-  var amount = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
-  if (amount > (currentUser?.balance ?? 0)) {
-    print("Saldo Anda Tidak Mencukupi");
-    return;
-  }
-  users.forEach((User user) {
-    if (user.pin == currentUser?.pin) {
-      user.balance -= amount;
-    }
-  });
+void pengurangan() {
+  int stopCondition = 0;
+  do {
+    stdout.write("Nilai a: ");
+    int a = int.parse(stdin.readLineSync() ?? '');
+    stdout.write("Nilai b: ");
+    int b = int.parse(stdin.readLineSync() ?? '');
+    int hasil = a - b;
+    print("Hasil $a + $b = $hasil");
+    print('Apakah Anda Ingin Melakukan Operasi Lagi ?');
+    print('Input angka Sembarang untuk Melanjutkan');
+    print('dan Apabila Ingin Stop Maka Input angka -999 ');
+    stopCondition = int.parse(stdin.readLineSync() ?? '');
+  } while (stopCondition != -999);
 }
 
-void cashDeposit() {
-  stdout.write("Nominal Akun : Rp.");
-  var amount = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
-  users.forEach((User user) {
-    if (user.pin == currentUser?.pin) {
-      user.balance += amount;
-    }
-  });
+void pembagian() {
+  int stopCondition = 0;
+  do {
+    stdout.write("Nilai a: ");
+    int a = int.parse(stdin.readLineSync() ?? '');
+    stdout.write("Nilai b: ");
+    int b = int.parse(stdin.readLineSync() ?? '');
+    double hasil = a / b;
+    print("Hasil $a + $b = $hasil");
+    print('Apakah Anda Ingin Melakukan Operasi Lagi ?');
+    print('Input angka Sembarang untuk Melanjutkan');
+    print('dan Apabila Ingin Stop Maka Input angka -999 ');
+    stopCondition = int.parse(stdin.readLineSync() ?? '');
+  } while (stopCondition != -999);
 }
 
-void balanceTransfer() {
-  stdout.write("Nama Akun Tujuan : ");
-  var name = stdin.readLineSync();
-  User? target;
-  users.forEach((User user) {
-    if (user.name == name) target = user;
-  });
-  if (target == null) {
-    return print("Pengguna Tidak Ditemukan");
-  }
-  stdout.write("Nominal Transfer : Rp ");
-  var amount = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
-  if (amount > (currentUser?.balance ?? 0)) {
-    print('Saldo Anda Tidak Mencukupi');
-  }
-  users.forEach((User user) {
-    if (user.pin == currentUser?.pin) user.balance -= amount;
-    if (user.name == name) user.balance += amount;
-  });
+void perkalian() {
+  int stopCondition = 0;
+  do {
+    stdout.write("Nilai a: ");
+    int a = int.parse(stdin.readLineSync() ?? '');
+    stdout.write("Nilai b: ");
+    int b = int.parse(stdin.readLineSync() ?? '');
+    int hasil = a * b;
+    print("Hasil $a + $b = $hasil");
+    print('Apakah Anda Ingin Melakukan Operasi Lagi ?');
+    print('Input angka Sembarang untuk Melanjutkan');
+    print('dan Apabila Ingin Stop Maka Input angka -999 ');
+    stopCondition = int.parse(stdin.readLineSync() ?? '');
+  } while (stopCondition != -999);
 }
