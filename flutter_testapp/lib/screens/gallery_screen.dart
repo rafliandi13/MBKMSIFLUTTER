@@ -26,15 +26,15 @@ class _GalleryState extends State<Gallery> {
   }
 
   Widget _createGridTileWidget(String url) => Builder(
-    builder: (context) => GestureDetector(
-      onLongPress: () {
-        _popupDialog = _createPopupDialog(url);
-        Overlay.of(context)!.insert(_popupDialog);
-      },
-      onLongPressEnd: (details) => _popupDialog.remove(),
-      child: Image.asset(url, fit: BoxFit.cover),
-    ),
-  );
+        builder: (context) => GestureDetector(
+          onLongPress: () {
+            _popupDialog = _createPopupDialog(url);
+            Overlay.of(context)!.insert(_popupDialog);
+          },
+          onLongPressEnd: (details) => _popupDialog.remove(),
+          child: Image.asset(url, fit: BoxFit.cover),
+        ),
+      );
 
   OverlayEntry _createPopupDialog(String url) {
     return OverlayEntry(
@@ -58,41 +58,41 @@ class _GalleryState extends State<Gallery> {
       ));
 
   Widget _createActionBar() => Container(
-    padding: EdgeInsets.symmetric(vertical: 10.0),
-    color: Colors.white,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        Icon(
-          Icons.favorite_border,
-          color: Colors.black,
+        padding: EdgeInsets.symmetric(vertical: 10.0),
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(
+              Icons.favorite_border,
+              color: Colors.black,
+            ),
+            Icon(
+              Icons.chat_bubble_outline_outlined,
+              color: Colors.black,
+            ),
+            Icon(
+              Icons.send,
+              color: Colors.black,
+            ),
+          ],
         ),
-        Icon(
-          Icons.chat_bubble_outline_outlined,
-          color: Colors.black,
-        ),
-        Icon(
-          Icons.send,
-          color: Colors.black,
-        ),
-      ],
-    ),
-  );
+      );
 
   Widget _createPopupContent(String url) => Container(
-    padding: EdgeInsets.symmetric(horizontal: 16.0),
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _createPhotoTitle(),
-          Image.asset(url, fit: BoxFit.fitWidth),
-          _createActionBar(),
-        ],
-      ),
-    ),
-  );
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _createPhotoTitle(),
+              Image.asset(url, fit: BoxFit.fitWidth),
+              _createActionBar(),
+            ],
+          ),
+        ),
+      );
 }
 
 class AnimatedDialog extends StatefulWidget {
@@ -113,7 +113,6 @@ class AnimatedDialogState extends State<AnimatedDialog>
   @override
   void initState() {
     super.initState();
-
     controller = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 400));
     scaleAnimation =

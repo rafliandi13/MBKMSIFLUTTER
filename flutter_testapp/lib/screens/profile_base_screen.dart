@@ -28,7 +28,7 @@ class _ProfileBaseScreenState extends State<ProfileBaseScreen> {
             title: Text(
               "rafliandi_ardana",
               style:
-              TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
             ),
             centerTitle: false,
             elevation: 0,

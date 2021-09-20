@@ -1,6 +1,7 @@
 class Highlight {
   String thumbnail;
   String title;
+
   Highlight({required this.thumbnail, required this.title});
 }
 
