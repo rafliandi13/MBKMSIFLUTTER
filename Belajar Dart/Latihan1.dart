@@ -5,7 +5,7 @@ int pin1 = 1234;
 int pin2 = 12345; 
 stdout.write("Masukkan Pin Anda : ");
 
-var kode_pin = int.parse(stdin.readLineSync()); 
+var kode_pin = int.parse(stdin.readLineSync());
 
 if (kode_pin == pin1 || kode_pin == pin2) {
 
@@ -14,10 +14,11 @@ print("2. Setor tunai");
 print("3. Transfer");
 print("4. Keluar Aplikasi");
 
-stdout.write("Masukkan Piihan Layanan :"); var pilihan = int.parse (stdin.readLineSync()) ;
+stdout.write("Masukkan Piihan Layanan :"); 
+var pilihan = int.parse (stdin.readLineSync());
 
 if(pilihan == 1){ 
-  stdout.write("Masukkan Nominal : "); 
+  stdout.write("Masukkan Nominal : ");
   var nominal = stdin.readLineSync(); 
   print("Terima Kasih anda telah menarik sejumlah " + nominal); 
   }else if (pilihan == 2){ 
